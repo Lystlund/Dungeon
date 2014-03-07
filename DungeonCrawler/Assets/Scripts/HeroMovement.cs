@@ -14,9 +14,21 @@ public class HeroMovement : MonoBehaviour {
 		//Velocity vectors to give movement to the hero
 		if (Input.GetKey(KeyCode.UpArrow)){
 			rigidbody.velocity = new Vector3(0,1,0);
+			if (Input.GetKey (KeyCode.RightArrow)) {
+				rigidbody.velocity = new Vector3(1,1,0);
+			}
+			else if (Input.GetKey(KeyCode.LeftArrow)){
+				rigidbody.velocity = new Vector3(-1,1,0);
+			}
 		}
 		else if (Input.GetKey(KeyCode.DownArrow)){
 			rigidbody.velocity = new Vector3(0,-1,0);
+			if (Input.GetKey(KeyCode.RightArrow)){
+				rigidbody.velocity = new Vector3(1,-1,0);
+			}
+			else if (Input.GetKey(KeyCode.LeftArrow)){
+				rigidbody.velocity = new Vector3(-1,-1,0);
+			}
 		}
 		else if (Input.GetKey(KeyCode.RightArrow)){
 			rigidbody.velocity = new Vector3(1,0,0);
