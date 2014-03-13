@@ -8,19 +8,18 @@ public class DoorBehavior : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		gameObject.renderer.material.mainTexture = DoorClosed;
-
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		float posX = transform.position.x;
-		float posY = transform.position.y;
-		float posZ = transform.position.z;
+
+		float DoorPosX = transform.position.x;
+		float DoorPosY = transform.position.y;
 
 		if (Input.GetKey(KeyCode.E)){
 			gameObject.renderer.material.mainTexture = DoorOpen;
 
-			transform.localPosition = new Vector3(posX,posY,0);
+			transform.localPosition = new Vector3(DoorPosX,DoorPosY,0);
 		}
 	}
 }
