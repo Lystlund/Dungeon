@@ -14,7 +14,7 @@ public class RatScript : Enemy {
 		characterlevel = heroScript.heroLevel;
 
 		EnemyStrength = 2;
-		EnemyThoughness = 5;
+		EnemyToughness = 5;
 		EnemyDexterity = 3;
 		EnemyReflex = 16;
 		EnemyHealth = 150;
