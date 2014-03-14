@@ -20,7 +20,7 @@ public class SpaceSpiderScript : Enemy {
 	
 	// Update is called once per frame
 	void Update () {
-		Debug.Log (characterlevel);
+		//Debug.Log (characterlevel);
 	
 	}
 }
