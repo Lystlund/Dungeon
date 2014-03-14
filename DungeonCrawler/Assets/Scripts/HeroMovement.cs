@@ -4,8 +4,8 @@ using System.Collections;
 public class HeroMovement : MonoBehaviour {
 
 	class HeroInfo{
-		public float playerPosX;
-		public float playerPosY;
+		public float heroPosX;
+		public float heroPosY;
 		public float heroSpeed = 5.0f;
 	}
 
@@ -16,8 +16,8 @@ public class HeroMovement : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		HeroInfo hero = new HeroInfo();
-		hero.playerPosX = transform.position.x;
-		hero.playerPosY = transform.position.y;
+		hero.heroPosX = transform.position.x;
+		hero.heroPosY = transform.position.y;
 
 		//Velocity vectors to give movement to the hero
 		if (Input.GetKey(KeyCode.UpArrow)){
