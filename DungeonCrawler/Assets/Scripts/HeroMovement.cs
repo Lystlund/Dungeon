@@ -9,6 +9,8 @@ public class HeroMovement : MonoBehaviour {
 		public float heroSpeed = 5.0f;
 	}
 
+	public int heroLevel = 1;
+
 	// Use this for initialization
 	void Start () {
 	}
