@@ -4,10 +4,10 @@ using System.Collections;
 public class Enemy : MonoBehaviour
 {
 	public float EnemyStrength;
-	float EnemyToughness;
-	float EnemyDexterity;
-	float EnemyReflex;
-	float EnemyHealth;
+	public float EnemyToughness;
+	public float EnemyDexterity;
+	public float EnemyReflex;
+	public float EnemyHealth;
 
 	// Use this for initialization
 	void Start ()

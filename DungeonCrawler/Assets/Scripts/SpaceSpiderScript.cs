@@ -15,7 +15,11 @@ public class SpaceSpiderScript : Enemy {
 		characterlevel = heroScript.heroLevel;
 
 
-		EnemyStrength = 2;
+		EnemyStrength = 3;
+		EnemyToughness = 3;
+		EnemyDexterity = 6;
+		EnemyReflex = 5;
+		EnemyHealth = 100;
 	}
 	
 	// Update is called once per frame
