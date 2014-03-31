@@ -3,15 +3,15 @@ using System.Collections;
 
 public class SpaceZombie : Enemy {
 
-	public GameObject hero;
-	HeroMovement heroScript;
-	float characterlevel;
 
 	// Use this for initialization
 	void Start () {
 		hero = GameObject.FindWithTag ("Player");
 		heroScript = hero.GetComponent<HeroMovement> ();
 		characterlevel = heroScript.heroLevel;
+		combatMan = GameObject.FindGameObjectWithTag ("Manager");
+		combatScript = combatMan.GetComponent<combatManagerScript> ();
+		id = 3;
 		
 		EnemyStrength = 6;
 		EnemyToughness = 6;
@@ -23,7 +23,7 @@ public class SpaceZombie : Enemy {
 	
 	// Update is called once per frame
 	void Update () {
-		Debug.Log (EnemyStrength);
+		//Debug.Log (characterlevel);
 	
 	}
 }

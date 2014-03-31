@@ -2,16 +2,16 @@
 using System.Collections;
 
 public class RatScript : Enemy {
-
-	public GameObject hero;
-	HeroMovement heroScript;
-	float characterlevel;
+	
 
 	// Use this for initialization
 	void Start () {
 		hero = GameObject.FindWithTag ("Player");
 		heroScript = hero.GetComponent<HeroMovement> ();
 		characterlevel = heroScript.heroLevel;
+		combatMan = GameObject.FindGameObjectWithTag ("Manager");
+		combatScript = combatMan.GetComponent<combatManagerScript> ();
+		id = 2;
 
 		EnemyStrength = 2;
 		EnemyToughness = 5;
@@ -23,7 +23,7 @@ public class RatScript : Enemy {
 	
 	// Update is called once per frame
 	void Update () {
-		Debug.Log (EnemyStrength);
+		//Debug.Log (characterlevel);
 	
 	}
 }
