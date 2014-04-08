@@ -18,6 +18,7 @@ public class Haliax : Enemy {
 		EnemyDexterity = 25;
 		EnemyReflex = 25;
 		EnemyHealth = 2500;
+		xp = 2500;
 	
 	}
 	

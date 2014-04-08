@@ -3,6 +3,7 @@ using System.Collections;
 
 public class Enemy : MonoBehaviour
 {
+
 	public GameObject hero;
 	public HeroMovement heroScript;
 	public float characterlevel;
@@ -16,23 +17,41 @@ public class Enemy : MonoBehaviour
 	public float EnemyHealth;
 	public GameObject combatMan;
 	public combatManagerScript combatScript;
+	public int xp;
+	public bool alive;
 
 	// Use this for initialization
 	public void Start ()
 	{
+		hero = GameObject.FindWithTag ("Player");
+		heroScript = hero.GetComponent<HeroMovement> ();
+		combatMan = GameObject.FindGameObjectWithTag ("Manager");
+		combatScript = combatMan.GetComponent<combatManagerScript> ();
 
+
+		alive = true;
 	}
 	
 	// Update is called once per frame
 	void Update ()
 	{
 		//Debug.Log (characterlevel);
-	
+		if (alive == false)
+		{
+			heroScript.xp = heroScript.xp + xp;
+		}
+	}
+
+	void OnTriggerEnter(Collider other)
+	{	
+		if(other.gameObject.tag == "Enemy")
+		{
+			alive = false;
+		}
 	}
 
 	//Collision. Starts combat with 1-4 enemies if collision is with player.
 	protected virtual void OnCollisionEnter(Collision col){
-
 		if (col.gameObject == GameObject.FindGameObjectWithTag ("Player")) {
 			numToCombat = Random.Range(1,5);
 

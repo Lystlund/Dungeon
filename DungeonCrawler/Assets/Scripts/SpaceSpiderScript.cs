@@ -10,6 +10,7 @@ public class SpaceSpiderScript : Enemy {
 		characterlevel = heroScript.heroLevel;
 		combatMan = GameObject.FindGameObjectWithTag ("Manager");
 		combatScript = combatMan.GetComponent<combatManagerScript> ();
+
 		id = 1;
 
 		EnemyStrength = 3;
@@ -17,6 +18,7 @@ public class SpaceSpiderScript : Enemy {
 		EnemyDexterity = 6;
 		EnemyReflex = 5;
 		EnemyHealth = 100;
+		xp = 100;
 	}
 	
 	// Update is called once per frame

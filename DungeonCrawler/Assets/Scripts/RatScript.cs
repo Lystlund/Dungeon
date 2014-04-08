@@ -11,6 +11,7 @@ public class RatScript : Enemy {
 		characterlevel = heroScript.heroLevel;
 		combatMan = GameObject.FindGameObjectWithTag ("Manager");
 		combatScript = combatMan.GetComponent<combatManagerScript> ();
+
 		id = 2;
 
 		EnemyStrength = 2;
@@ -18,6 +19,7 @@ public class RatScript : Enemy {
 		EnemyDexterity = 3;
 		EnemyReflex = 16;
 		EnemyHealth = 150;
+		xp = 150;
 	
 	}
 	

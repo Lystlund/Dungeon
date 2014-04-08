@@ -12,6 +12,13 @@ public class HeroMovement : MonoBehaviour {
 	}
 
 	public int heroLevel = 1;
+	public int xp;
+	public int xpRequired;
+	public float Strength;
+	public float Toughness;
+	public float Dexterity;
+	public float Reflex;
+	public float Health;
 
 	public void TargetAngle(float speed, float target){
 		float angle = Mathf.MoveTowardsAngle(transform.eulerAngles.z,target,speed*Time.deltaTime);
@@ -20,10 +27,29 @@ public class HeroMovement : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+		heroLevel = 1;
+		xp = 0;
+		xpRequired = 1000;
+		Strength = 1;
+		Toughness = 1;
+		Dexterity = 1;
+		Reflex = 1;
+		Health = 10;
 	}
 	
 	// Update is called once per frame
 	void Update () {
+		if (xp == xpRequired){
+			heroLevel = heroLevel + 1;
+			Strength = Strength + 1;
+			Toughness = Toughness + 1;
+			Dexterity = Dexterity + 1;
+			Reflex = Reflex + 1;
+			Health = Health + 2;
+			xp = 0;
+			xpRequired = 1000*heroLevel;
+			Debug.Log(heroLevel);
+		}
 
 		HeroInfo hero = new HeroInfo();
 		hero.heroPosX = transform.position.x;
