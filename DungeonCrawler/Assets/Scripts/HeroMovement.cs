@@ -29,12 +29,12 @@ public class HeroMovement : MonoBehaviour {
 	void Start () {
 		heroLevel = 1;
 		xp = 0;
-		xpRequired = 1000;
-		Strength = 1;
-		Toughness = 1;
-		Dexterity = 1;
-		Reflex = 1;
-		Health = 10;
+		xpRequired = 30;
+		Strength = 30;
+		Toughness = 30;
+		Dexterity = 30;
+		Reflex = 30;
+		Health = 30;
 	}
 	
 	// Update is called once per frame

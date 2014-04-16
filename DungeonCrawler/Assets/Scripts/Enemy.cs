@@ -52,6 +52,7 @@ public class Enemy : MonoBehaviour
 
 	//Collision. Starts combat with 1-4 enemies if collision is with player.
 	protected virtual void OnCollisionEnter(Collision col){
+		Debug.Log ("HELLO!");
 		if (col.gameObject == GameObject.FindGameObjectWithTag ("Player")) {
 			numToCombat = Random.Range(1,5);
 
