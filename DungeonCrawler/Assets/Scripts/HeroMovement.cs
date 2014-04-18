@@ -30,7 +30,7 @@ public class HeroMovement : MonoBehaviour {
 	void Start () {
 		heroLevel = 1;
 		xp = 0;
-		xpRequired = 30;
+		xpRequired = 100;
 		Strength = 30;
 		Toughness = 30;
 		Dexterity = 30;
@@ -40,16 +40,16 @@ public class HeroMovement : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if (xp == xpRequired){
+		if (xp >= xpRequired){
 			heroLevel = heroLevel + 1;
 			Strength = Strength + 1;
 			Toughness = Toughness + 1;
 			Dexterity = Dexterity + 1;
 			Reflex = Reflex + 1;
 			Health = Health + 2;
-			xp = 0;
-			xpRequired = 1000*heroLevel;
-			Debug.Log(heroLevel);
+			xp = xp-xpRequired ;
+			xpRequired = 100*heroLevel;
+			Debug.Log("Hero Level " + heroLevel);
 		}
 
 		HeroInfo hero = new HeroInfo();

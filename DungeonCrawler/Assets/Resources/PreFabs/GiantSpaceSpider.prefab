@@ -52,12 +52,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f08073ea573749cab39364df070e973, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hero: {fileID: 0}
+  heroScript: {fileID: 0}
+  characterlevel: 0
   EnemyStrength: 0
   EnemyToughness: 0
   EnemyDexterity: 0
   EnemyReflex: 0
   EnemyHealth: 0
-  hero: {fileID: 0}
+  combatMan: {fileID: 0}
+  combatScript: {fileID: 0}
+  xp: 0
+  alive: 0
 --- !u!212 &21200000
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -79,8 +85,8 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_SortingLayerID: 0
-  m_Sprite: {fileID: 21300000, guid: c5b4e34be76e75e4ca07d920b1aa6a8d, type: 3}
-  m_Color: {r: 1, g: 0, b: 0, a: 1}
+  m_Sprite: {fileID: 21300000, guid: 1bedf8d7292b06d45be5efa2334400b6, type: 3}
+  m_Color: {r: .725490212, g: .725490212, b: .725490212, a: 1}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
