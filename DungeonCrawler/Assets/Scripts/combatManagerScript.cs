@@ -364,6 +364,25 @@ public class combatManagerScript : MonoBehaviour {
 			} 
 		else {
 			Debug.Log("THE PLAYER WON!");
+
+			if (typeofEnemy == 1){
+				heroScript.xp = heroScript.xp + spider.xp*numOfEnemies;
+				Debug.Log("Xp: " + heroScript.xp);
+			}
+			if (typeofEnemy == 2){
+				heroScript.xp = heroScript.xp + rat.xp*numOfEnemies;
+				Debug.Log("Xp: " + heroScript.xp);
+			}
+			if (typeofEnemy == 3){
+				heroScript.xp = heroScript.xp + zombie.xp*numOfEnemies;
+				Debug.Log("Xp: " + heroScript.xp);
+			}
+			if (typeofEnemy == 4){
+				heroScript.xp = heroScript.xp + haliax.xp*numOfEnemies;
+				Debug.Log("Xp: " + heroScript.xp);
+			}
+
+
 			comPlayer.transform.position = playerPos;
 			}
 
