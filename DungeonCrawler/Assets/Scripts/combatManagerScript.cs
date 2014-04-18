@@ -7,6 +7,9 @@ public class combatManagerScript : MonoBehaviour {
 	GameObject fadeTex;
 	textureScript fadeScript;
 
+	GameObject cText;
+	combatTextScript t;
+
 	public GameObject hero;
 	public HeroMovement heroScript;
 	public SpaceZombieCombatScript zombie;
@@ -15,7 +18,7 @@ public class combatManagerScript : MonoBehaviour {
 	public RatCombatScript rat;
 
 	private List<int> listOfEnemies = new List<int>(new int[] {0,0,0,0});
-	private List<GameObject> combatEnemies =  new List<GameObject>();
+	public List<GameObject> combatEnemies =  new List<GameObject>();
 
 	public GameObject comPlayer;
 	Vector3 playerPos;
@@ -28,9 +31,16 @@ public class combatManagerScript : MonoBehaviour {
 	bool giveDam = false;
 	bool healthGiven = false;
 	int typeofEnemy;
-	float enemyhptotal = 0;
+	public float enemyhptotal = 0;
 	float[] enemyHps = new float[4] {0,0,0,0};
 	int turn = 0;
+	int enemyHit;
+	public float damage;
+	public float eDamage;
+
+
+
+
 	
 	// Use this for initialization
 	void Start () {
@@ -47,6 +57,9 @@ public class combatManagerScript : MonoBehaviour {
 
 		fadeTex = GameObject.FindGameObjectWithTag("Fader");
 		fadeScript = fadeTex.GetComponent<textureScript>();
+
+		cText = GameObject.Find ("combatTextBox");
+		t = cText.GetComponent<combatTextScript>();
 
 
 	}
@@ -85,6 +98,7 @@ public class combatManagerScript : MonoBehaviour {
 	public void startCombat(){ //is started by enemyscript collision. Spawns enemies and moves player.
 		inCombat = true;
 		combatStarted = true;
+		t.UpdateText(0);
 
 		//StartCoroutine(fadeScript.Fade(2.0f)); //FOR FADING. WILL HAPPEN LATER
 
@@ -166,6 +180,7 @@ public class combatManagerScript : MonoBehaviour {
 			}
 			Debug.Log("HEALTH GIVEN");
 			healthGiven = true;
+			t.UpdateText(0);
 		}
 
 		GameObject HitEnemy = combatEnemies[0];
@@ -179,6 +194,7 @@ public class combatManagerScript : MonoBehaviour {
 			if (CombatInitiate==false){
 				if (Input.GetKeyUp(KeyCode.Space)){ //space iniates that the player wants to attack.
 					CombatInitiate=true; 
+					t.UpdateText(1);
 					//Debug.Log("COMBAT INITIATED!");
 				}
 			}
@@ -188,21 +204,25 @@ public class combatManagerScript : MonoBehaviour {
 					HitEnemy=combatEnemies[0];
 					CombatInitiate = false;
 					giveDam = true;
+					enemyHit = 0;
 				}
 				else if (Input.GetKey(KeyCode.Alpha2) && combatEnemies[1] != null){
 					HitEnemy=combatEnemies[1];
 					CombatInitiate = false;
 					giveDam = true;
+					enemyHit = 1;
 
 				} else if (Input.GetKey(KeyCode.Alpha3) && combatEnemies[2] != null){
 					HitEnemy=combatEnemies[2];
 					CombatInitiate = false;
 					giveDam = true;
+					enemyHit = 2;
 
 				} else if (Input.GetKey(KeyCode.Alpha4) && combatEnemies[3] != null){
 					HitEnemy=combatEnemies[3];
 					CombatInitiate = false;
 					giveDam = true;
+					enemyHit = 3;
 				}
 				//Debug.Log("HIT ENEMY "+CombatInitiate);
 			}
@@ -237,7 +257,7 @@ public class combatManagerScript : MonoBehaviour {
 				//chance to hit: (d20+attdex+(attlvl/2))>= (10+defrex+(deflvl/2))
 				//damage: (d20+attstr+(attlvl/2))-(deftgh+(deflvl/2))
 				bool hit = false;
-				float damage;		 //Then, the actual damage calculation is done. 
+				 //Then, the actual damage calculation is done. 
 				if((Random.Range (1,20)+heroScript.Dexterity+(heroScript.heroLevel/2))>=(10+eReflex+(eLevel/2))){ //first a chance to hit, and if it passes.. 
 					hit = true;
 					damage = (Random.Range (1,20)+heroScript.Strength+(heroScript.heroLevel/2))-(eToughness+(eLevel/2)); //..damage is calculated.
@@ -245,7 +265,7 @@ public class combatManagerScript : MonoBehaviour {
 						damage = 0;
 					}
 					Debug.Log("HERO DAMAGE "+damage+" "+hit);
-				
+
 					int i = 0;
 					foreach(GameObject g in combatEnemies){
 					//	Debug.Log("ENEMY "+i+"  "+enemyHps[i]);
@@ -257,13 +277,16 @@ public class combatManagerScript : MonoBehaviour {
 						}
 						i++;
 					}
+					t.UpdateText(2);
 				}
 				else{
 					Debug.Log("HERO MISS");
+					t.UpdateText(3);
 				}
 
 				enemyhptotal = enemyHps[0]+enemyHps[1]+enemyHps[2]+enemyHps[3]; //total enemy health is calculated to check if the combat is still going.
 				Debug.Log ("Total health "+enemyhptotal+" Individuals: "+enemyHps[0]+" "+enemyHps[1]+" "+enemyHps[2]+" "+enemyHps[3]);
+
 
 				int j = 0;
 				foreach(GameObject g in combatEnemies){
@@ -291,7 +314,7 @@ public class combatManagerScript : MonoBehaviour {
 		if (PlayerTurn!=true){
 			bool eDam = true;
 			Debug.Log("ENEMY TURN BEGUN!");
-
+			//t.UpdateText(0);
 
 				if (eDam==true){
 				Debug.Log("DAMAGE WILL BE GIVEN!"); //just as in player turn, variables are created, then filled in with appropriate stats.
@@ -321,30 +344,33 @@ public class combatManagerScript : MonoBehaviour {
 						eLevel = haliax.characterlevel;
 					}
 				bool hit = false;
-				float damage;
 				if((Random.Range (1,20)+eDexterity+(eLevel/2))>=(10+heroScript.Reflex+(heroScript.heroLevel/2))){
 					hit = true;
-					damage = (Random.Range (1,20)+eStrength+(eLevel/2))-(heroScript.Toughness+(heroScript.heroLevel/2));
-					if (damage < 0){
-						damage = 0;
+					eDamage = (Random.Range (1,20)+eStrength+(eLevel/2))-(heroScript.Toughness+(heroScript.heroLevel/2));
+					if (eDamage < 0){
+						eDamage = 0;
 					}
-					Debug.Log(damage+" "+heroScript.Health);
-					heroScript.Health-=damage;
+					Debug.Log(eDamage+" "+heroScript.Health);
+					heroScript.Health-=eDamage;
 
 					if(heroScript.Health<=0){ //if the hero has 0 health, the combat ends, with the hero dead.
 						endCombat(true);
 
 					}
-					Debug.Log("ENEMY DAMAGE: "+damage);
+					Debug.Log("ENEMY DAMAGE: "+eDamage);
+					t.UpdateText(4);
 			}
 				else{
 					Debug.Log("ENEMY MISS");
+					t.UpdateText(5);
 				}
 				eDam = false;
 				PlayerTurn=true;
 				Debug.Log("HERO HEALTH: "+heroScript.Health);
+				//t.UpdateText(0);
 			}
 			turn++; //turn is incremented when the enemy has had it's turn. THIS NEEDS TO BE CHANGED IF WE EVER IMPLEMENT REFLEX START THINGY.
+			//t.UpdateText(0);
 		}
 		//Debug.Log ("TURN: " + turn);
 	}
@@ -387,6 +413,30 @@ public class combatManagerScript : MonoBehaviour {
 		turn = 0; //resets turn counter.
 		healthGiven = false;
 		inCombat = false;
+		t.UpdateText(0);
+	}
+
+
+
+
+	public float seeHealth(){ //for the text output.
+		float returner;
+
+		if(enemyHit == 0){
+			returner = enemyHps[0];
+		}
+		else if(enemyHit == 1){
+			returner = enemyHps[1];
+
+		}
+		else if(enemyHit == 2){
+			returner = enemyHps[2];
+		}
+		else{
+			returner = enemyHps[3];
+		}
+
+		return returner;
 	}
 
 

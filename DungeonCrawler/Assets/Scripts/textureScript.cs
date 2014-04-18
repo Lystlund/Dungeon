@@ -34,7 +34,7 @@ public class textureScript : MonoBehaviour {
 	void Update () {
 		blackThing.color = thisColor;
 
-		Debug.Log("ThisColor: "+thisColor.a + "  blackthingcolor: "+blackThing.color.a+"   "+fadeIn);	
+		//Debug.Log("ThisColor: "+thisColor.a + "  blackthingcolor: "+blackThing.color.a+"   "+fadeIn);	
 	}
 
 
