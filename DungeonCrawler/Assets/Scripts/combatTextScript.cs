@@ -57,7 +57,6 @@ public class combatTextScript : MonoBehaviour {
 		heroText.color = Color.clear;
 		enemyDamText.color = Color.clear;
 		heroDamText.color = Color.clear;
-		//enemyText.text = "YO DAWG!";
 
 
 	}
