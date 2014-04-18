@@ -386,7 +386,7 @@ public class combatManagerScript : MonoBehaviour {
 
 		if (heroDeath) { //checks if it was the hero's death of enemies' death that triggered endCombat. Right now they do the same thing.
 			Debug.Log("GAME OVER!"); //this needs to change when we have a GAME OVER screen.
-			comPlayer.transform.position = playerPos;
+			Application.LoadLevel(0);
 			} 
 		else {
 			Debug.Log("THE PLAYER WON!");
