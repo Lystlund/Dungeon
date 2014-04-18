@@ -4,6 +4,9 @@ using System.Collections.Generic;
 
 public class combatManagerScript : MonoBehaviour {
 
+	GameObject fadeTex;
+	textureScript fadeScript;
+
 	public GameObject hero;
 	public HeroMovement heroScript;
 	public SpaceZombieCombatScript zombie;
@@ -42,6 +45,10 @@ public class combatManagerScript : MonoBehaviour {
 		comPlayer = GameObject.FindGameObjectWithTag ("Player");
 		heroScript = comPlayer.GetComponent<HeroMovement> ();
 
+		fadeTex = GameObject.FindGameObjectWithTag("Fader");
+		fadeScript = fadeTex.GetComponent<textureScript>();
+
+
 	}
 	
 	// Update is called once per frame
@@ -79,10 +86,12 @@ public class combatManagerScript : MonoBehaviour {
 		inCombat = true;
 		combatStarted = true;
 
+		//StartCoroutine(fadeScript.Fade(2.0f)); //FOR FADING. WILL HAPPEN LATER
+
 		Debug.Log ("COMBAT STARTED");
 
 		if (combatStarted) {
-
+			//while(!fadeScript.fadeIn){} //also for fading.
 			playerPos = comPlayer.transform.position;
 			comPlayer.transform.position = new Vector3 (100, 0, 0); //storing player position (for return) and moving him.
 
