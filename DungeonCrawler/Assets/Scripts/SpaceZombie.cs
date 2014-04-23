@@ -6,15 +6,15 @@ public class SpaceZombie : Enemy {
 
 	// Use this for initialization
 	void Start () {
-
+		//Load scripts 
 		hero = GameObject.FindWithTag ("Player");
 		heroScript = hero.GetComponent<HeroMovement> ();
 		characterlevel = heroScript.heroLevel;
 		combatMan = GameObject.FindGameObjectWithTag ("Manager");
 		combatScript = combatMan.GetComponent<combatManagerScript> ();
 
+		//Set enemies variables, these are declaired in the Enemy script
 		id = 3;
-		
 		EnemyStrength = 6;
 		EnemyToughness = 6;
 		EnemyDexterity = 1;
