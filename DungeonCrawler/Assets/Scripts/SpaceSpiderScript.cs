@@ -2,6 +2,7 @@
 using System.Collections;
 
 public class SpaceSpiderScript : Enemy {
+	//The script for the enemy of the game Spider
 
 	// Use this for initialization
 	void Start () {

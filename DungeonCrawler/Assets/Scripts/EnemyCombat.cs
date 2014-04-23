@@ -19,17 +19,12 @@ public class EnemyCombat : MonoBehaviour {
 	public int xp;
 	public bool alive;
 
-
 	// Use this for initialization
 	void Start () {
+		//load scripts
 		hero = GameObject.FindWithTag ("Player");
 		heroScript = hero.GetComponent<HeroMovement> ();
 		combatMan = GameObject.FindGameObjectWithTag ("Manager");
 		combatScript = combatMan.GetComponent<combatManagerScript> ();
-		
-		
-		alive = true;
-	
 	}
-
 }

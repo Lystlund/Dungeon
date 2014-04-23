@@ -2,7 +2,7 @@ using UnityEngine;
 using System.Collections;
 
 public class SpaceZombie : Enemy {
-
+	//The script for the enemy of the game Zombie
 
 	// Use this for initialization
 	void Start () {

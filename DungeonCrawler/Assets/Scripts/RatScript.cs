@@ -2,7 +2,7 @@
 using System.Collections;
 
 public class RatScript : Enemy {
-	
+	//The script for the enemy of the game Rat
 
 	// Use this for initialization
 	void Start () {
