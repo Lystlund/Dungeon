@@ -11,7 +11,7 @@ public class combatTextScript : MonoBehaviour {
 	GameObject comMan;
 	combatManagerScript combatScript;
 
-	public GUIText[] texts;
+	GUIText[] texts;
 	GUIText heroText;
 	GUIText enemyText;
 	GUIText enemyDamText;

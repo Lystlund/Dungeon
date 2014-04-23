@@ -3,7 +3,7 @@ using System.Collections;
 
 public class victoryScript : MonoBehaviour {
 
-	public int level;
+	int level;
 
 	GameObject hero;
 	HeroMovement heroScript;
