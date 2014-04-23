@@ -52,20 +52,19 @@ public class Enemy : MonoBehaviour
 
 	//Collision. Starts combat with 1-4 enemies if collision is with player.
 	protected virtual void OnCollisionEnter(Collision col){
-		Debug.Log ("HELLO!");
 		if (col.gameObject == GameObject.FindGameObjectWithTag ("Player")) {
-			numToCombat = Random.Range(1,5);
+			numToCombat = Random.Range(1,5);	//picks a random number between 1 and 4. This decides how many enemies there will be in the combat
 
 			if(id==4){ //checks if it is the boss. If so, it should only ever spawn 1.
 				combatScript.addToCombat(id);
 			}
 			else{
-				for(int i = 0; i<numToCombat; i++){ //other cases it runs addToCombat (function in combatManagerScript) random number of times.
+				for(int i = 0; i<numToCombat; i++){ //other cases it runs addToCombat (function in combatManagerScript) random number of times, to add enemies to combat.
 					combatScript.addToCombat(id);
 				}
 			}
 			combatScript.startCombat(); //combat starts and gameobject in the level is destroyed.
-			Destroy(this.gameObject);
+			Destroy(this.gameObject); //the enemy in the dungeon is destroyed.
 		}
 
 	}

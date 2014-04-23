@@ -3,7 +3,9 @@ using System.Collections;
 
 public class combatTextScript : MonoBehaviour {
 
-	GameObject hero;
+	//This is the script that controls the text at the bottom of the window during combat.
+
+	GameObject hero;			//Variables
 	HeroMovement heroScript;
 
 	GameObject comMan;
@@ -20,14 +22,13 @@ public class combatTextScript : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 
-		hero = GameObject.FindGameObjectWithTag ("Player");
+		hero = GameObject.FindGameObjectWithTag ("Player");		//Initializing gameobjects and scripts.
 		heroScript = hero.GetComponent<HeroMovement> ();
-
 		comMan = GameObject.FindGameObjectWithTag ("Manager");
 		combatScript = comMan.GetComponent<combatManagerScript>();
 
 		//enemyTextObject = Find
-		texts = GetComponentsInChildren<GUIText>();
+		texts = GetComponentsInChildren<GUIText>();		//Figuring out which script belongs to which variable through this array and 4 for-loops, checking for each script name.
 
 		for(int i=0;i<4;i++){
 			if(texts[i].name == "enemyText"){
@@ -51,7 +52,7 @@ public class combatTextScript : MonoBehaviour {
 		}
 
 
-		guiTexture.color = Color.clear;
+		guiTexture.color = Color.clear;		//Since the game does not start in combat, the text needs to be invisible.
 		guiTexture.enabled = false;
 		enemyText.color = Color.clear;
 		heroText.color = Color.clear;
@@ -70,10 +71,10 @@ public class combatTextScript : MonoBehaviour {
 
 
 
-	public void UpdateText(float type){
+	public void UpdateText(float type){	//This function is called at specific times during combat, when meaningful things have changed. This is to avoid it running in Update or other constantly running function.
 		//Debug.Log("TEXT UPDATED");
 
-		if(combatScript.inCombat){
+		if(combatScript.inCombat){		//First we check if we're in combat. If so, the text is shown, if not it is invisible again.
 			guiTexture.color = Color.black;
 			guiTexture.enabled = true;
 			enemyText.color = Color.white;
@@ -95,10 +96,10 @@ public class combatTextScript : MonoBehaviour {
 		enemyText.text = "LAST ENEMY HIT Health: "+combatScript.seeHealth();
 
 		if(combatScript.combatStarted){
-		enemyDamText.text = "PLAYER TURN. Enemies Waiting";
+		enemyDamText.text = "PLAYER TURN. Enemies Waiting";		//The fact that it is the player's turn is only displayed in the beginning of combat, because it is more valuable to display the enemy health afterwards.
 		}
 
-		if(type == 0){
+		if(type == 0){		//the "type" variable is used to determine where in combat we are and therefore decide what to write. type is sent as parameter when the function is called.
 			heroDamText.text = "Press [SPACE] to Initiate Combat Systems.";
 		}
 		else if(type == 1){

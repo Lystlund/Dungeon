@@ -3,6 +3,8 @@ using System.Collections;
 
 public class EnemyCombat : MonoBehaviour {
 
+	//The EnemyCombat script is a copy of the Enemy script, but instead of being the enemy that is in the dungeon, it is the enemy that is spawned in combat. Therefore it fx does not have the collision.
+
 	public GameObject hero;
 	public HeroMovement heroScript;
 
@@ -29,9 +31,5 @@ public class EnemyCombat : MonoBehaviour {
 		alive = true;
 	
 	}
-	
-	// Update is called once per frame
-	void Update () {
-	
-	}
+
 }
