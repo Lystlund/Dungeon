@@ -71,7 +71,7 @@ public class combatTextScript : MonoBehaviour {
 
 
 	public void UpdateText(float type){
-		Debug.Log("TEXT UPDATED");
+		//Debug.Log("TEXT UPDATED");
 
 		if(combatScript.inCombat){
 			guiTexture.color = Color.black;

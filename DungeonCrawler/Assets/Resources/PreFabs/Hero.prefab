@@ -83,7 +83,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: .75, y: .75, z: .200000003}
+  m_Size: {x: .5, y: .75, z: .200000003}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!108 &10800000
 Light:
@@ -95,7 +95,7 @@ Light:
   serializedVersion: 3
   m_Type: 2
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 1.79999995
+  m_Intensity: 2.76999998
   m_Range: 10
   m_SpotAngle: 30
   m_CookieSize: 10
@@ -132,6 +132,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   heroLevel: 1
+  xp: 0
+  xpRequired: 0
+  Strength: 0
+  Toughness: 0
+  Dexterity: 0
+  Reflex: 0
+  Health: 0
 --- !u!212 &21200000
 SpriteRenderer:
   m_ObjectHideFlags: 1

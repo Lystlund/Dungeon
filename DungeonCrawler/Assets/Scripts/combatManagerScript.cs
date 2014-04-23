@@ -10,6 +10,9 @@ public class combatManagerScript : MonoBehaviour {
 	GameObject cText;
 	combatTextScript t;
 
+	GameObject vic;
+	victoryScript vScript;
+
 	public GameObject hero;
 	public HeroMovement heroScript;
 	public SpaceZombieCombatScript zombie;
@@ -60,6 +63,8 @@ public class combatManagerScript : MonoBehaviour {
 
 		cText = GameObject.Find ("combatTextBox");
 		t = cText.GetComponent<combatTextScript>();
+		vic = GameObject.Find ("VictoryConditionObject");
+		vScript = vic.GetComponent<victoryScript>();
 
 
 	}
@@ -88,7 +93,7 @@ public class combatManagerScript : MonoBehaviour {
 		if (!inCombat) {
 			listOfEnemies[numOfEnemies] = opp; //the enemy id (opp) is added into the list of enemies one at a time.
 			numOfEnemies += 1; //right now we can't have more than 4 enemies in battle at once. Can easily change if we want more.
-			if (numOfEnemies >= 4) {
+			if (numOfEnemies > 4) {
 				numOfEnemies = 0;
 			}
 		}
@@ -102,7 +107,7 @@ public class combatManagerScript : MonoBehaviour {
 
 		//StartCoroutine(fadeScript.Fade(2.0f)); //FOR FADING. WILL HAPPEN LATER
 
-		Debug.Log ("COMBAT STARTED");
+		//Debug.Log ("COMBAT STARTED");
 
 		if (combatStarted) {
 			//while(!fadeScript.fadeIn){} //also for fading.
@@ -113,7 +118,7 @@ public class combatManagerScript : MonoBehaviour {
 			foreach (int e in listOfEnemies) {
 				//Debug.Log("Number in listofEnemies: "+listOfEnemies[i]);
 				if(listOfEnemies [i] == 0)  { //Creates enemy of the correct type depending on the id given in the enemy list.
-						Debug.Log("The Enemy is 0! So no enemy");
+						//Debug.Log("The Enemy is 0! So no enemy");
 						combatEnemies.Add(null); //if zero, gameobject is set to null. this is used to track if there isn't an enemy at a position.
 					}
 				else if (listOfEnemies [i] == 1) {
@@ -178,7 +183,7 @@ public class combatManagerScript : MonoBehaviour {
 				//Debug.Log("START ENEMY "+j+"  "+enemyHps[j]);
 				j++;
 			}
-			Debug.Log("HEALTH GIVEN");
+			//Debug.Log("HEALTH GIVEN");
 			healthGiven = true;
 			t.UpdateText(0);
 		}
@@ -200,7 +205,7 @@ public class combatManagerScript : MonoBehaviour {
 			}
 			if (CombatInitiate==true){ //a keycode 1-4 defines which enemy the player wants to attack.
 				if (Input.GetKey(KeyCode.Alpha1) && combatEnemies[0] != null){
-					Debug.Log(combatEnemies[1]);
+					//Debug.Log(combatEnemies[1]);
 					HitEnemy=combatEnemies[0];
 					CombatInitiate = false;
 					giveDam = true;
@@ -264,7 +269,7 @@ public class combatManagerScript : MonoBehaviour {
 					if (damage < 0){ //damage cannot be lower than zero.
 						damage = 0;
 					}
-					Debug.Log("HERO DAMAGE "+damage+" "+hit);
+					//Debug.Log("HERO DAMAGE "+damage+" "+hit);
 
 					int i = 0;
 					foreach(GameObject g in combatEnemies){
@@ -280,7 +285,7 @@ public class combatManagerScript : MonoBehaviour {
 					t.UpdateText(2);
 				}
 				else{
-					Debug.Log("HERO MISS");
+					//Debug.Log("HERO MISS");
 					t.UpdateText(3);
 				}
 
@@ -313,11 +318,11 @@ public class combatManagerScript : MonoBehaviour {
 
 		if (PlayerTurn!=true){
 			bool eDam = true;
-			Debug.Log("ENEMY TURN BEGUN!");
+			//Debug.Log("ENEMY TURN BEGUN!");
 			//t.UpdateText(0);
 
 				if (eDam==true){
-				Debug.Log("DAMAGE WILL BE GIVEN!"); //just as in player turn, variables are created, then filled in with appropriate stats.
+				//Debug.Log("DAMAGE WILL BE GIVEN!"); //just as in player turn, variables are created, then filled in with appropriate stats.
 					float eStrength = 0;
 					float eDexterity = 0;
 					float eLevel = 0;
@@ -350,23 +355,23 @@ public class combatManagerScript : MonoBehaviour {
 					if (eDamage < 0){
 						eDamage = 0;
 					}
-					Debug.Log(eDamage+" "+heroScript.Health);
+					//Debug.Log(eDamage+" "+heroScript.Health);
 					heroScript.Health-=eDamage;
 
 					if(heroScript.Health<=0){ //if the hero has 0 health, the combat ends, with the hero dead.
 						endCombat(true);
 
 					}
-					Debug.Log("ENEMY DAMAGE: "+eDamage);
+					//Debug.Log("ENEMY DAMAGE: "+eDamage);
 					t.UpdateText(4);
 			}
 				else{
-					Debug.Log("ENEMY MISS");
+					//Debug.Log("ENEMY MISS");
 					t.UpdateText(5);
 				}
 				eDam = false;
 				PlayerTurn=true;
-				Debug.Log("HERO HEALTH: "+heroScript.Health);
+				//Debug.Log("HERO HEALTH: "+heroScript.Health);
 				//t.UpdateText(0);
 			}
 			turn++; //turn is incremented when the enemy has had it's turn. THIS NEEDS TO BE CHANGED IF WE EVER IMPLEMENT REFLEX START THINGY.
@@ -406,6 +411,7 @@ public class combatManagerScript : MonoBehaviour {
 			if (typeofEnemy == 4){
 				heroScript.xp = heroScript.xp + haliax.xp*numOfEnemies;
 				Debug.Log("Xp: " + heroScript.xp);
+				vScript.setInfo();
 			}
 
 
@@ -423,7 +429,7 @@ public class combatManagerScript : MonoBehaviour {
 		}
 
 		foreach(GameObject g in combatEnemies){
-			Debug.Log("GAMEOBJECKTS: "+g); //OMG! THIS IS BRILLIANT! Why havent I thought of this before?!?! GAMEOBJECKTS! SERIOUSLY. DAMMIT, BRAIN.. You're failing me.
+			//Debug.Log("GAMEOBJECKTS: "+g); //OMG! THIS IS BRILLIANT! Why havent I thought of this before?!?! GAMEOBJECKTS! SERIOUSLY. DAMMIT, BRAIN.. You're failing me.
 			Destroy(g); //makes sure everything is cleaned up if the player dies.
 		}
 
@@ -437,6 +443,7 @@ public class combatManagerScript : MonoBehaviour {
 
 
 
+// ------------- SEE HEALTH -------
 
 	public float seeHealth(){ //for the text output.
 		float returner;
