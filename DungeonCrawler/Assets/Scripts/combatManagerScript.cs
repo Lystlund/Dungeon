@@ -10,20 +10,20 @@ public class combatManagerScript : MonoBehaviour {
 	GameObject vic;
 	victoryScript vScript;
 
-	public GameObject hero;
-	public HeroMovement heroScript;
-	public SpaceZombieCombatScript zombie;
-	public SpaceSpiderCombatScript spider;
-	public HaliaxCombatScript haliax;
-	public RatCombatScript rat;
+	GameObject hero;
+	HeroMovement heroScript;
+	SpaceZombieCombatScript zombie;
+	SpaceSpiderCombatScript spider;
+	HaliaxCombatScript haliax;
+	RatCombatScript rat;
 
-	private List<int> listOfEnemies = new List<int>(new int[] {0,0,0,0});		//The two arrays used to see which enemies there are..
-	public List<GameObject> combatEnemies =  new List<GameObject>();
+	List<int> listOfEnemies = new List<int>(new int[] {0,0,0,0});		//The two arrays used to see which enemies there are..
+	List<GameObject> combatEnemies =  new List<GameObject>();
 
-	public GameObject comPlayer;
+	GameObject comPlayer;
 	Vector3 playerPos;
 
-	private int numOfEnemies = 0;
+	int numOfEnemies = 0;
 	public bool inCombat = false;
 	public bool combatStarted = false;
 	bool CombatInitiate=false;
@@ -31,7 +31,7 @@ public class combatManagerScript : MonoBehaviour {
 	bool giveDam = false;
 	bool healthGiven = false;
 	int typeofEnemy;
-	public float enemyhptotal = 0;
+	float enemyhptotal = 0;
 	float[] enemyHps = new float[4] {0,0,0,0};	//health array used to track all of the enemies' health. This means that the health in combat is a temporary thing for each combat encounter.
 	int turn = 0;
 	int enemyHit;
