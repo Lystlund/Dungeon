@@ -4,13 +4,11 @@ using System.Collections;
 
 public class HeroMovement : MonoBehaviour {
 
-	class HeroInfo{
-		public float heroPosX;
-		public float heroPosY;
-		public float heroSpeed = 5.0f;
-		public float turnSpeed;
-		public float targetAngle = 0.0f;
-	}
+	float heroPosX;
+	float heroPosY;
+	float heroSpeed = 5.0f;
+	float turnSpeed;
+	float targetAngle = 0.0f;
 
 	public int heroLevel = 1;
 	public int xp;
@@ -21,7 +19,7 @@ public class HeroMovement : MonoBehaviour {
 	public float Reflex;
 	public float Health;
 
-	public void TargetAngle(float speed, float target){
+	void TargetAngle(float speed, float target){
 		float angle = Mathf.MoveTowardsAngle(transform.eulerAngles.z,target,speed*Time.deltaTime);
 		transform.eulerAngles = new Vector3(0,0,angle);
 	}
@@ -52,43 +50,42 @@ public class HeroMovement : MonoBehaviour {
 			Debug.Log("Hero Level " + heroLevel);
 		}
 
-		HeroInfo hero = new HeroInfo();
-		hero.heroPosX = transform.position.x;
-		hero.heroPosY = transform.position.y;
-		hero.turnSpeed = 200.0f;
+		heroPosX = transform.position.x;
+		heroPosY = transform.position.y;
+		turnSpeed = 200.0f;
 	
 		//Velocity vectors to give movement to the hero
 		if (Input.GetKey(KeyCode.UpArrow)){
-			rigidbody.velocity = new Vector3(0,hero.heroSpeed,0);
-			TargetAngle(hero.turnSpeed,90);
+			rigidbody.velocity = new Vector3(0,heroSpeed,0);
+			TargetAngle(turnSpeed,90);
 			if (Input.GetKey (KeyCode.RightArrow)) {
-				rigidbody.velocity = new Vector3(hero.heroSpeed,hero.heroSpeed,0);
-				TargetAngle(hero.turnSpeed,45);
+				rigidbody.velocity = new Vector3(heroSpeed,heroSpeed,0);
+				TargetAngle(turnSpeed,45);
 			}
 			else if (Input.GetKey(KeyCode.LeftArrow)){
-				rigidbody.velocity = new Vector3(-hero.heroSpeed,hero.heroSpeed,0);
-				TargetAngle(hero.turnSpeed,135);
+				rigidbody.velocity = new Vector3(-heroSpeed,heroSpeed,0);
+				TargetAngle(turnSpeed,135);
 			}
 		}
 		else if (Input.GetKey(KeyCode.DownArrow)){
-			rigidbody.velocity = new Vector3(0,-hero.heroSpeed,0);
-			TargetAngle(hero.turnSpeed,270);
+			rigidbody.velocity = new Vector3(0,-heroSpeed,0);
+			TargetAngle(turnSpeed,270);
 			if (Input.GetKey(KeyCode.RightArrow)){
-				rigidbody.velocity = new Vector3(hero.heroSpeed,-hero.heroSpeed,0);
-				TargetAngle(hero.turnSpeed,315);
+				rigidbody.velocity = new Vector3(heroSpeed,-heroSpeed,0);
+				TargetAngle(turnSpeed,315);
 			}
 			else if (Input.GetKey(KeyCode.LeftArrow)){
-				TargetAngle(hero.turnSpeed,225);
-				rigidbody.velocity = new Vector3(-hero.heroSpeed,-hero.heroSpeed,0);
+				TargetAngle(turnSpeed,225);
+				rigidbody.velocity = new Vector3(-heroSpeed,-heroSpeed,0);
 			}
 		}
 		else if (Input.GetKey(KeyCode.RightArrow)){
-			rigidbody.velocity = new Vector3(hero.heroSpeed,0,0);
-			TargetAngle(hero.turnSpeed,0);
+			rigidbody.velocity = new Vector3(heroSpeed,0,0);
+			TargetAngle(turnSpeed,0);
 		}
 		else if (Input.GetKey(KeyCode.LeftArrow)){
-			rigidbody.velocity = new Vector3(-hero.heroSpeed,0,0);
-			TargetAngle(hero.turnSpeed,180);
+			rigidbody.velocity = new Vector3(-heroSpeed,0,0);
+			TargetAngle(turnSpeed,180);
 		}
 		else{
 			rigidbody.velocity = new Vector3(0,0,0);

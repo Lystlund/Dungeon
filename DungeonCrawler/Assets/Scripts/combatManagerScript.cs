@@ -10,7 +10,6 @@ public class combatManagerScript : MonoBehaviour {
 	GameObject vic;
 	victoryScript vScript;
 
-	GameObject hero;
 	HeroMovement heroScript;
 	SpaceZombieCombatScript zombie;
 	SpaceSpiderCombatScript spider;
