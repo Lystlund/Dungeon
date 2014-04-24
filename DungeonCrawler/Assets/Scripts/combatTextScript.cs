@@ -61,14 +61,6 @@ public class combatTextScript : MonoBehaviour {
 
 
 	}
-	
-	// Update is called once per frame
-	void Update () {
-	
-	}
-
-
-
 
 
 	public void UpdateText(float type){	//This function is called at specific times during combat, when meaningful things have changed. This is to avoid it running in Update or other constantly running function.

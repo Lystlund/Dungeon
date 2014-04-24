@@ -10,7 +10,6 @@ public class combatManagerScript : MonoBehaviour {
 	GameObject vic;
 	victoryScript vScript;
 
-	GameObject hero;
 	HeroMovement heroScript;
 	SpaceZombieCombatScript zombie;
 	SpaceSpiderCombatScript spider;
@@ -162,7 +161,7 @@ public class combatManagerScript : MonoBehaviour {
 // ----------------------------------------------- COMBAT --------------------------------------------------------------------- //
 
 
-	public void Combat (){
+	void Combat (){
 
 		if (!healthGiven) { //gives the appropriate health to enemies at the start of combat. Had to do it here, because the above function didn't register the correct health, for some reason.
 			int j = 0;		//it will only do it once, though because of the healthGiven boolean.
@@ -362,7 +361,7 @@ public class combatManagerScript : MonoBehaviour {
 
 // ------------------------------------------------ COMBAT END ------------------------ //
 
-	public void endCombat(bool heroDeath){ //parameter decides if the hero won or lost combat.
+	void endCombat(bool heroDeath){ //parameter decides if the hero won or lost combat.
 
 		if (heroDeath) { //checks if it was the hero's death of enemies' death that triggered endCombat.
 			//this ends combat with the hero losing. Therefore the game will end, loading the menu scene.
