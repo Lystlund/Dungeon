@@ -37,6 +37,9 @@ public class combatManagerScript : MonoBehaviour {
 	int enemyHit;
 	public float damage;
 	public float eDamage;
+	public AudioClip hitSound;
+	public AudioClip missSound;
+	public Vector3 heroPos;
 
 
 
@@ -66,6 +69,10 @@ public class combatManagerScript : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+
+		heroPos.x = heroScript.transform.position.x;
+		heroPos.y = heroScript.transform.position.y;
+		heroPos.z = heroScript.transform.position.z;
 
 		if (inCombat) { //just to test if endCombat works before we actually make it possible to end it xD
 			if (Input.GetKey (KeyCode.Q)) {
@@ -254,6 +261,7 @@ public class combatManagerScript : MonoBehaviour {
 					foreach(GameObject g in combatEnemies){
 						if(HitEnemy==combatEnemies[i]){
 							enemyHps[i] -= damage; //damage is subtracted from enemy's health.
+							AudioSource.PlayClipAtPoint(hitSound,heroPos, 1.0f);
 							if(enemyHps[i]<0){
 								enemyHps[i]=0;
 							}
@@ -263,6 +271,7 @@ public class combatManagerScript : MonoBehaviour {
 					t.UpdateText(2);
 				}
 				else{
+					AudioSource.PlayClipAtPoint(missSound,heroPos, 1.0f);
 					t.UpdateText(3);
 				}
 
@@ -322,6 +331,7 @@ public class combatManagerScript : MonoBehaviour {
 			//And once again, damage is calcuted, using the name principles, only in reverse.
 			if((Random.Range (1,20)+eDexterity+(eLevel/2))>=(10+heroScript.Reflex+(heroScript.heroLevel/2))){
 				eDamage = (Random.Range (1,20)+eStrength+(eLevel/2))-(heroScript.Toughness+(heroScript.heroLevel/2));
+				AudioSource.PlayClipAtPoint(hitSound,heroPos, 1.0f);
 				if (eDamage < 0){
 					eDamage = 0;
 				}
@@ -334,6 +344,7 @@ public class combatManagerScript : MonoBehaviour {
 				t.UpdateText(4);
 			}
 			else{
+				AudioSource.PlayClipAtPoint(missSound,heroPos, 1.0f);
 				t.UpdateText(5);
 			}
 			PlayerTurn=true;

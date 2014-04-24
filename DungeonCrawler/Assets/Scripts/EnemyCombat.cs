@@ -17,7 +17,6 @@ public class EnemyCombat : MonoBehaviour {
 	public GameObject combatMan;
 	public combatManagerScript combatScript;
 	public int xp;
-	public bool alive;
 
 	// Use this for initialization
 	void Start () {
