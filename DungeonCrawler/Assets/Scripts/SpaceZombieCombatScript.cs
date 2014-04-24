@@ -24,4 +24,21 @@ public class SpaceZombieCombatScript : EnemyCombat {
 	
 	}
 
+	public new void setLevel(){
+		//sets level
+		characterlevel = heroScript.getInfo (0);
+		Debug.Log ("SETTING LEVEL"+heroScript.getInfo (0));
+		//figures stats and xp out depending on level
+		if (characterlevel != 1) {
+			Debug.Log (heroScript.getInfo (0));
+			EnemyStrength = 10 + 4.9f * characterlevel;
+			EnemyToughness = 10 + 4.9f * characterlevel;
+			EnemyDexterity = 2 + 5.05f * characterlevel;
+			EnemyReflex = 2 + 5.05f * characterlevel;
+			EnemyHealth = 100 + 2f * characterlevel;
+			xp = 400 * (int)characterlevel;
+			Debug.Log ("SPIDER LEVEL: " + characterlevel + " health: " + EnemyHealth);
+		}
+	}
+
 }

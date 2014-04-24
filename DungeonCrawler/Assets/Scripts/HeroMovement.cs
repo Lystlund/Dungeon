@@ -40,10 +40,10 @@ public class HeroMovement : MonoBehaviour {
 	void Update () {
 		if (xp >= xpRequired){
 			heroLevel = heroLevel + 1;
-			Strength = Strength + 1;
-			Toughness = Toughness + 1;
-			Dexterity = Dexterity + 1;
-			Reflex = Reflex + 1;
+			Strength = Strength + 5;
+			Toughness = Toughness + 5;
+			Dexterity = Dexterity + 5;
+			Reflex = Reflex + 5;
 			Health = Health + 2;
 			xp = xp-xpRequired ;
 			xpRequired = 100*((int)heroLevel);

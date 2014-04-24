@@ -22,4 +22,7 @@ public class HaliaxCombatScript : EnemyCombat {
 		xp = 2500;
 	}
 
+	//The boss' level is constant so this doesn't need to change anything.
+	public new void setLevel(){
+	}
 }

@@ -29,6 +29,7 @@ public class combatManagerScript : MonoBehaviour {
 	bool PlayerTurn=true;
 	bool giveDam = false;
 	bool healthGiven = false;
+	bool lvlset = false;
 	int typeofEnemy;
 	float enemyhptotal = 0;
 	float[] enemyHps = new float[4] {0,0,0,0};	//health array used to track all of the enemies' health. This means that the health in combat is a temporary thing for each combat encounter.
@@ -166,6 +167,25 @@ public class combatManagerScript : MonoBehaviour {
 
 	void Combat (){
 
+		//setting the level and stats of the enemy.
+		if (!lvlset) {
+			if (typeofEnemy == 1) {
+				spider.setLevel ();
+				lvlset = true;
+			} 
+			else if (typeofEnemy == 2) {
+				rat.setLevel ();
+				lvlset = true;
+			} 
+			else if (typeofEnemy == 3) {
+				zombie.setLevel ();
+				lvlset = true;
+			}
+			else if (typeofEnemy == 4) {
+				haliax.setLevel ();
+				lvlset = true;
+			}
+		}
 		if (!healthGiven) { //gives the appropriate health to enemies at the start of combat. Had to do it here, because the above function didn't register the correct health, for some reason.
 			int j = 0;		//it will only do it once, though because of the healthGiven boolean.
 			foreach (GameObject g in combatEnemies) {	 //sets 
@@ -182,6 +202,9 @@ public class combatManagerScript : MonoBehaviour {
 			healthGiven = true;
 			t.UpdateText(0);
 		}
+
+
+
 
 		GameObject HitEnemy = combatEnemies[0];	//used to determine which enemy is being hit.
 
@@ -390,7 +413,7 @@ public class combatManagerScript : MonoBehaviour {
 			if (typeofEnemy == 4){
 				heroScript.xp = heroScript.xp + haliax.xp*numOfEnemies;
 				Debug.Log("Xp: " + heroScript.xp);
-				vScript.setInfo();	//sets the info in victoryScript, for the Victory Scene.
+				vScript.setInfo();	//sets the info in victoryScript, for the Victory Scene, because when Haliax is defeated, the game is won.
 			}
 
 
@@ -415,6 +438,7 @@ public class combatManagerScript : MonoBehaviour {
 		numOfEnemies = 0;
 		turn = 0; //resets turn counter.
 		healthGiven = false;
+		lvlset = false;
 		inCombat = false;
 		t.UpdateText(0);		//All booleans and variables are reset.
 	}

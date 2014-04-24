@@ -26,4 +26,8 @@ public class EnemyCombat : MonoBehaviour {
 		combatMan = GameObject.FindGameObjectWithTag ("Manager");
 		combatScript = combatMan.GetComponent<combatManagerScript> ();
 	}
+
+
+	//function that sets the level of the mobs in each combat. Dependent on the type of enemy, so look in the individual scripts.
+	public void setLevel (){}
 }
