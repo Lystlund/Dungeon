@@ -5,7 +5,7 @@ public class HaliaxCombatScript : EnemyCombat {
 	//The script for the boss of the game Haliax
 
 	// Use this for initialization
-	void Start () {
+	new void Start () {
 		//Load scripts 
 		hero = GameObject.FindWithTag ("Player");
 		heroScript = hero.GetComponent<HeroMovement> ();

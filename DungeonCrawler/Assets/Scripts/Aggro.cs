@@ -19,7 +19,7 @@ public class Aggro : MonoBehaviour {
 	void Update () {
 		//finds the direction the hero is minus the position of the enemy the script is applied on.
 		Vector3 dir = target.position - transform.position;
-		//calculates the angle (we minus with -180 due to the rotation of our enemies)
+		//calculates the angle (we subtract with -180 due to the rotation of our enemies)
 		float angle = Mathf.Atan2(dir.y,dir.x) * Mathf.Rad2Deg-180;
 		//changes the enemies rotation
 		transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
