@@ -18,7 +18,7 @@ public class HaliaxCombatScript : EnemyCombat {
 		EnemyToughness = 25;
 		EnemyDexterity = 25;
 		EnemyReflex = 25;
-		EnemyHealth = 2500;
+		EnemyHealth = 25;
 		xp = 2500;
 	}
 	

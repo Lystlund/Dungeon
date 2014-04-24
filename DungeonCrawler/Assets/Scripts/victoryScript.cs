@@ -12,15 +12,25 @@ public class victoryScript : MonoBehaviour {
 	victoryScript2 vicInfo;
 
 	bool textSet = false;
+	public static bool created = false;
 
 	// Use this for initialization
+
+	void Awake(){
+		if (!created){
+			DontDestroyOnLoad (transform.gameObject);	//This object is meant to be kept when the Victory Scene is loaded so it is forced to not be destroyed on load.
+			created = true;
+		} 
+		else{
+			Destroy(this.gameObject);
+		}
+
+	}
+
 	void Start () {
-
-		DontDestroyOnLoad (transform.gameObject);	//This object is meant to be kept when the Victory Scene is loaded so it is forced to not be destroyed on load.
-
 		hero = GameObject.FindGameObjectWithTag ("Player");
 		heroScript = hero.GetComponent<HeroMovement> ();	
-		
+		Debug.Log (heroScript.heroLevel);
 	}
 	
 	// Update is called once per frame
