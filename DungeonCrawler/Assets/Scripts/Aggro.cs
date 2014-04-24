@@ -3,9 +3,12 @@ using System.Collections;
 
 public class Aggro : MonoBehaviour {
 
-	public Transform target;
+	GameObject hero;
+	Transform target;
 	// Use this for initialization
 	void Start () {
+		hero = GameObject.FindGameObjectWithTag ("Player");
+		target = hero.transform;
 	}
 	
 	// Update is called once per frame

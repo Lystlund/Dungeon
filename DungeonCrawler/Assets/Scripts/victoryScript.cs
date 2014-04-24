@@ -12,7 +12,7 @@ public class victoryScript : MonoBehaviour {
 	victoryScript2 vicInfo;
 
 	bool textSet = false;
-	public static bool created = false;
+	static bool created = false;
 
 	// Use this for initialization
 
@@ -30,7 +30,6 @@ public class victoryScript : MonoBehaviour {
 	void Start () {
 		hero = GameObject.FindGameObjectWithTag ("Player");
 		heroScript = hero.GetComponent<HeroMovement> ();	
-		Debug.Log (heroScript.heroLevel);
 	}
 	
 	// Update is called once per frame
