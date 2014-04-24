@@ -44,7 +44,7 @@ public class victoryScript : MonoBehaviour {
 
 	
 	public void setInfo(){		//Info is set and the Victory scene is loaded. This function is called when the game is won.
-		level = heroScript.heroLevel;
+		level = (int)heroScript.getInfo(0);
 		Application.LoadLevel (2);
 	}
 

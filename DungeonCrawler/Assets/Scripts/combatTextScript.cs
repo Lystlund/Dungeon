@@ -84,7 +84,7 @@ public class combatTextScript : MonoBehaviour {
 		}
 
 
-		heroText.text = "HERO: Health: "+heroScript.Health;
+		heroText.text = "HERO: Health: "+combatScript.heroHealth;
 		enemyText.text = "LAST ENEMY HIT Health: "+combatScript.seeHealth();
 
 		if(combatScript.combatStarted){

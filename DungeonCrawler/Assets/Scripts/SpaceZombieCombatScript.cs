@@ -9,7 +9,7 @@ public class SpaceZombieCombatScript : EnemyCombat {
 		//Load scripts 
 		hero = GameObject.FindWithTag ("Player");
 		heroScript = hero.GetComponent<HeroMovement> ();
-		characterlevel = heroScript.heroLevel;
+		characterlevel = heroScript.getInfo(0);
 		combatMan = GameObject.FindGameObjectWithTag ("Manager");
 		combatScript = combatMan.GetComponent<combatManagerScript> ();
 		
@@ -23,9 +23,5 @@ public class SpaceZombieCombatScript : EnemyCombat {
 
 	
 	}
-	
-	// Update is called once per frame
-	void Update () {
-	
-	}
+
 }

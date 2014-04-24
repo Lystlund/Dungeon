@@ -9,7 +9,7 @@ public class SpaceZombie : Enemy {
 		//Load scripts 
 		hero = GameObject.FindWithTag ("Player");
 		heroScript = hero.GetComponent<HeroMovement> ();
-		characterlevel = heroScript.heroLevel;
+		characterlevel = heroScript.getInfo(0);
 		combatMan = GameObject.FindGameObjectWithTag ("Manager");
 		combatScript = combatMan.GetComponent<combatManagerScript> ();
 
@@ -23,10 +23,5 @@ public class SpaceZombie : Enemy {
 		xp = 300;
 	
 	}
-	
-	// Update is called once per frame
-	void Update () {
-		//Debug.Log (characterlevel);
-	
-	}
+
 }

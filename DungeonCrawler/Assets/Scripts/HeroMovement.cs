@@ -10,14 +10,14 @@ public class HeroMovement : MonoBehaviour {
 	float turnSpeed;
 	float targetAngle = 0.0f;
 
-	public int heroLevel = 1;
+	float heroLevel = 1;
 	public int xp;
 	public int xpRequired;
-	public float Strength;
-	public float Toughness;
-	public float Dexterity;
-	public float Reflex;
-	public float Health;
+	float Strength;
+	float Toughness;
+	float Dexterity;
+	float Reflex;
+	float Health;
 
 	void TargetAngle(float speed, float target){
 		float angle = Mathf.MoveTowardsAngle(transform.eulerAngles.z,target,speed*Time.deltaTime);
@@ -29,11 +29,11 @@ public class HeroMovement : MonoBehaviour {
 		heroLevel = 1;
 		xp = 0;
 		xpRequired = 100;
-		Strength = 30;
-		Toughness = 30;
-		Dexterity = 30;
-		Reflex = 30;
-		Health = 30;
+		Strength = 10;
+		Toughness = 10;
+		Dexterity = 10;
+		Reflex = 10;
+		Health = 100;
 	}
 	
 	// Update is called once per frame
@@ -46,7 +46,7 @@ public class HeroMovement : MonoBehaviour {
 			Reflex = Reflex + 1;
 			Health = Health + 2;
 			xp = xp-xpRequired ;
-			xpRequired = 100*heroLevel;
+			xpRequired = 100*((int)heroLevel);
 			Debug.Log("Hero Level " + heroLevel);
 		}
 
@@ -91,4 +91,41 @@ public class HeroMovement : MonoBehaviour {
 			rigidbody.velocity = new Vector3(0,0,0);
 		}
 	}
+
+	public float getInfo(int i){  //Getter for all the relevant hero info
+		if(i == 0){
+			return heroLevel;
+		}
+		else if(i == 1){
+			return Strength;
+		}
+		else if(i == 2){
+			return Toughness;
+		}
+		else if(i == 3){
+			return Dexterity;
+		}
+		else if(i == 4){
+			return Reflex;
+		}
+		else if(i == 5){
+			return Health;
+		}
+		else {
+			return 0;
+		}
+	}
+
+	public void setHealth(float h){
+		Health = h;
+	}
+
+
+
+
+
+
+
+
+
 }

@@ -32,13 +32,14 @@ public class combatManagerScript : MonoBehaviour {
 	int typeofEnemy;
 	float enemyhptotal = 0;
 	float[] enemyHps = new float[4] {0,0,0,0};	//health array used to track all of the enemies' health. This means that the health in combat is a temporary thing for each combat encounter.
+	public float heroHealth;
 	int turn = 0;
 	int enemyHit;
 	public float damage;
 	public float eDamage;
 	public AudioClip hitSound;
 	public AudioClip missSound;
-	public Vector3 heroPos;
+	Vector3 heroPos;
 
 
 
@@ -107,6 +108,8 @@ public class combatManagerScript : MonoBehaviour {
 	public void startCombat(){ //Spawns enemies and moves player.
 		inCombat = true;
 		combatStarted = true;
+		heroHealth = heroScript.getInfo (5);
+		Debug.Log (heroHealth);
 		t.UpdateText(0);		//Combat screen is set, so the bools are set to true and the text will appear via the updateText() function.
 
 		if (combatStarted) {
@@ -247,11 +250,12 @@ public class combatManagerScript : MonoBehaviour {
 				}
 
 
+
 				//The algorithms used for combat are as such (d20 means roll with d20 die): chance to hit: if (d20+attdex+(attlvl/2))>= (10+defrex+(deflvl/2))
 														 	//damage = (d20+attstr+(attlvl/2))-(deftgh+(deflvl/2))
 				 //Then, the actual damage calculation is done. 
-				if((Random.Range (1,20)+heroScript.Dexterity+(heroScript.heroLevel/2))>=(10+eReflex+(eLevel/2))){ //first a chance to hit, and if it passes.. 
-					damage = (Random.Range (1,20)+heroScript.Strength+(heroScript.heroLevel/2))-(eToughness+(eLevel/2)); //..damage is calculated.
+				if((Random.Range (1,20)+heroScript.getInfo(3)+(heroScript.getInfo(0)/2))>=(10+eReflex+(eLevel/2))){ //first a chance to hit, and if it passes.. 
+					damage = (Random.Range (1,20)+heroScript.getInfo(1)+(heroScript.getInfo(0)/2))-(eToughness+(eLevel/2)); //..damage is calculated.
 					if (damage < 0){ //damage cannot be lower than zero.
 						damage = 0;
 					}
@@ -328,15 +332,16 @@ public class combatManagerScript : MonoBehaviour {
 				}
 
 			//And once again, damage is calcuted, using the name principles, only in reverse.
-			if((Random.Range (1,20)+eDexterity+(eLevel/2))>=(10+heroScript.Reflex+(heroScript.heroLevel/2))){
-				eDamage = (Random.Range (1,20)+eStrength+(eLevel/2))-(heroScript.Toughness+(heroScript.heroLevel/2));
+			if((Random.Range (1,20)+eDexterity+(eLevel/2))>=(10+heroScript.getInfo(4)+(heroScript.getInfo(0)/2))){
+				eDamage = (Random.Range (1,20)+eStrength+(eLevel/2))-(heroScript.getInfo(2)+(heroScript.getInfo(0)/2));
 				AudioSource.PlayClipAtPoint(hitSound,heroPos, 1.0f);
 				if (eDamage < 0){
 					eDamage = 0;
 				}
-				heroScript.Health-=eDamage;
+				//heroScript.setHealth(heroScript.getInfo(5)-eDamage);
+				heroHealth -= eDamage;
 
-				if(heroScript.Health<=0){ //if the hero has 0 health, the combat ends, with the hero dead.
+				if(heroHealth<=0){ //if the hero has 0 health, the combat ends, with the hero dead.
 					endCombat(true);
 
 				}
