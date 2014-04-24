@@ -63,7 +63,6 @@ MonoBehaviour:
   combatMan: {fileID: 0}
   combatScript: {fileID: 0}
   xp: 0
-  alive: 0
 --- !u!212 &21200000
 SpriteRenderer:
   m_ObjectHideFlags: 1
