@@ -16,11 +16,11 @@ public class RatScript : Enemy {
 		//Set enemies variables, these are declaired in the Enemy script
 		id = 2;
 		EnemyStrength = 2;
-		EnemyToughness = 5;
-		EnemyDexterity = 3;
-		EnemyReflex = 16;
-		EnemyHealth = 150;
-		xp = 150;
+		EnemyToughness = 3;
+		EnemyDexterity = 6;
+		EnemyReflex = 14;
+		EnemyHealth = 30;
+		xp = 250;
 	
 	}
 

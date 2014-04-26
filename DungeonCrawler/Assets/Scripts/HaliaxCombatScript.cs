@@ -14,11 +14,11 @@ public class HaliaxCombatScript : EnemyCombat {
 		combatScript = combatMan.GetComponent<combatManagerScript> ();
 	
 		//Set enemies variables, these are declaired in the Enemy script
-		EnemyStrength = 25;
-		EnemyToughness = 25;
-		EnemyDexterity = 25;
-		EnemyReflex = 25;
-		EnemyHealth = 2500;
+		EnemyStrength = 105;
+		EnemyToughness = 105;
+		EnemyDexterity = 105;
+		EnemyReflex = 105;
+		EnemyHealth = 250;
 		xp = 2500;
 	}
 
