@@ -15,11 +15,11 @@ public class SpaceSpiderScript : Enemy {
 
 		//Set enemies variables, these are declaired in the Enemy script
 		id = 1;
-		EnemyStrength = 3;
+		EnemyStrength = 5;
 		EnemyToughness = 3;
-		EnemyDexterity = 6;
+		EnemyDexterity = 4;
 		EnemyReflex = 5;
-		EnemyHealth = 100;
-		xp = 100;
+		EnemyHealth = 50;
+		xp = 400;
 	}
 }
