@@ -36,7 +36,7 @@ public class SpaceZombieCombatScript : EnemyCombat {
 			EnemyDexterity = 2 + 5.05f * characterlevel;
 			EnemyReflex = 2 + 5.05f * characterlevel;
 			EnemyHealth = 100 + 2f * characterlevel;
-			xp = 400 * (int)characterlevel;
+			xp = 400;
 			Debug.Log ("SPIDER LEVEL: " + characterlevel + " health: " + EnemyHealth);
 		}
 	}

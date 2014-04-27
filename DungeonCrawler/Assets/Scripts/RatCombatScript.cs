@@ -35,7 +35,7 @@ public class RatCombatScript : EnemyCombat {
 			EnemyDexterity = 6 + 4.9f * characterlevel;
 			EnemyReflex = 14 + 4.9f * characterlevel;
 			EnemyHealth = 30 + 0.5f * characterlevel;
-			xp = 250 * (int)characterlevel;
+			xp = 250;
 			Debug.Log ("RAT LEVEL: " + characterlevel + " health: " + EnemyHealth);
 		}
 	}
