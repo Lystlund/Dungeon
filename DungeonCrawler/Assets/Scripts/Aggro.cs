@@ -28,7 +28,7 @@ public class Aggro : MonoBehaviour {
 		float angle = Mathf.Atan2(dir.y,dir.x) * Mathf.Rad2Deg-180;
 		//changes the enemies rotation
 
-		if (distance <= 3){
+		if (distance <= 2){
 		transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
 		}
 	}
