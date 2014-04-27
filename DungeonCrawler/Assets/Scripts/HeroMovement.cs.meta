@@ -2,7 +2,9 @@ fileFormatVersion: 2
 guid: f201314531740fc44a6f8d370c350968
 MonoImporter:
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - CombatMusic: {fileID: 8300000, guid: e5ae0687a51109b4b9a765c9f41412d8, type: 3}
+  - RoamingMusic: {fileID: 8300000, guid: eca4be7180ab04e4aaebda9e664f0ec9, type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
