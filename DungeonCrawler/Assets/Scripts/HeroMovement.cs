@@ -162,21 +162,4 @@ public class HeroMovement : MonoBehaviour {
 		Health = h;
 	}
 
-
-	void OnGUI () {
-			if (quitMenu == true) {
-				// Make a background box
-				GUI.Box (new Rect (Screen.height/2-10, Screen.width/2-10, 100, 90), "Loot-Quest");
-
-				// Make the first button. If it is pressed, Application.Loadlevel (1) will be executed
-			if (GUI.Button (new Rect (Screen.height/2-20, Screen.width/2-40, 80, 20), "Menu")) {
-						Application.LoadLevel (0);
-				}
-
-				// Make the second button.
-			if (GUI.Button (new Rect (Screen.height/2-20, Screen.width/2-70, 80, 20), "Return")) {
-					quitMenu = false;
-				}
-			}
-		}
 }
