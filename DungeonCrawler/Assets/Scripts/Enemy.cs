@@ -19,6 +19,12 @@ public class Enemy : MonoBehaviour
 	public combatManagerScript combatScript;
 	public int xp;
 
+	bool decideMove = true;
+	bool moving = false;
+	float timer;
+	Vector3 targetDest = Vector3.zero;
+
+
 	// Use this for initialization
 	public void Start ()
 	{
@@ -28,6 +34,35 @@ public class Enemy : MonoBehaviour
 		combatMan = GameObject.FindGameObjectWithTag ("Manager");
 		combatScript = combatMan.GetComponent<combatManagerScript> ();
 	}
+
+	void Update(){
+
+		timer += Time.deltaTime;
+		if (decideMove && id != 3 && id!= 4) {
+
+			//targetDest = transform.position + new Vector3 (Random.Range (-5, 0), Random.Range (-5, 0), 0);
+			targetDest = transform.InverseTransformDirection(Random.Range (-5, 5), Random.Range (-5, 5), 0);
+			float rot = Vector3.Distance(transform.forward,targetDest);
+			transform.Rotate(0,0,rot);
+			//transform.eulerAngles = new Vector3(0,0,targetDest.y);
+			transform.rotation = new Quaternion(0,0,rot,0);
+			//targetDest = Vector3.forward;
+			Debug.Log ("CURRENT: " + transform.position + "  TARGET:" + targetDest+ "rot: "+rot);
+			decideMove = false;
+			moving = true;
+		}
+		if (moving) {
+			transform.rigidbody.velocity = targetDest.normalized;
+			int threshold = Random.Range(2,8);
+				if(transform.position == targetDest || timer > threshold){
+				timer = 0;
+				moving = false;
+				decideMove = true;
+			}
+		}
+
+	}
+
 
 	//Collision. Starts combat with 1-4 enemies if collision is with player.
 	protected virtual void OnCollisionEnter(Collision col){
