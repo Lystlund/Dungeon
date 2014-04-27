@@ -41,13 +41,23 @@ public class Enemy : MonoBehaviour
 		if (decideMove && id != 3 && id!= 4) {
 
 			//targetDest = transform.position + new Vector3 (Random.Range (-5, 0), Random.Range (-5, 0), 0);
+			//float rot = Vector3.Distance(transform.forward,targetDest);
+
 			targetDest = transform.InverseTransformDirection(Random.Range (-5, 5), Random.Range (-5, 5), 0);
-			float rot = Vector3.Distance(transform.forward,targetDest);
-			transform.Rotate(0,0,rot);
+
+			Vector3 dir = targetDest - transform.position;
+			float angle = Mathf.Atan2(targetDest.y,targetDest.x) * Mathf.Rad2Deg-180;
+			transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
+
+
+			//transform.Rotate(0,0,rot);
 			//transform.eulerAngles = new Vector3(0,0,targetDest.y);
-			transform.rotation = new Quaternion(0,0,rot,0);
+			//transform.rotation = new Quaternion(0,0,rot,0);
 			//targetDest = Vector3.forward;
-			Debug.Log ("CURRENT: " + transform.position + "  TARGET:" + targetDest+ "rot: "+rot);
+			//Debug.Log ("CURRENT: " + transform.position + "  TARGET:" + targetDest+ "rot: "+rot);
+
+
+
 			decideMove = false;
 			moving = true;
 		}
