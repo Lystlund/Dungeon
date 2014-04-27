@@ -145,6 +145,9 @@ public class combatManagerScript : MonoBehaviour {
 
 				if(listOfEnemies [i] != 0)  { //moves enemies to appropriate positions
 					combatEnemies [i].transform.position = new Vector3 (105, 2.3f - (i*1.2f), 0);
+					if(typeofEnemy == 4){
+						combatEnemies [i].transform.position = new Vector3 (105, 1f, 0);
+					}
 				}
 				i++;
 			}

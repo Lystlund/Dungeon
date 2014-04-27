@@ -84,8 +84,8 @@ public class combatTextScript : MonoBehaviour {
 		}
 
 
-		heroText.text = "HERO: Health: "+combatScript.heroHealth;
-		enemyText.text = "LAST ENEMY HIT Health: "+combatScript.seeHealth();
+		heroText.text = "HERO: Health: "+(int)combatScript.heroHealth;
+		enemyText.text = "LAST ENEMY HIT Health: "+(int)combatScript.seeHealth();
 
 		if(combatScript.combatStarted){
 		enemyDamText.text = "PLAYER TURN. Enemies Waiting";		//The fact that it is the player's turn is only displayed in the beginning of combat, because it is more valuable to display the enemy health afterwards.
@@ -98,14 +98,14 @@ public class combatTextScript : MonoBehaviour {
 			heroDamText.text = "Select Enemy to Engage with. Use [1-4] commands.";
 		}
 		else if(type == 2){
-			heroDamText.text = "Damage to enemy: "+combatScript.damage;
+			heroDamText.text = "Damage to enemy: "+(int)combatScript.damage;
 		}
 		else if(type == 3){
 			heroDamText.text = "HERO MISS.";
 		}
 		else if(type == 4){
 			//heroDamText.text = "HERO MISS.";
-			enemyDamText.text = "Enemy Damage to Hero: "+combatScript.eDamage;
+			enemyDamText.text = "Enemy Damage to Hero: "+(int)combatScript.eDamage;
 		}
 		else if(type == 5){
 			//heroDamText.text = "HERO MISS.";

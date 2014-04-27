@@ -71,7 +71,7 @@ public class HeroMovement : MonoBehaviour {
 			CombatMusicHolder.audio.mute = false;
 		}
 
-		if (xp >= xpRequired){
+		if (xp >= xpRequired && heroLevel <= 19){
 			heroLevel = heroLevel + 1;
 			Strength = Strength + 5;
 			Toughness = Toughness + 5;
