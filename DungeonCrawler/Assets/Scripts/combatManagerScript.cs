@@ -42,10 +42,6 @@ public class combatManagerScript : MonoBehaviour {
 	public AudioClip missSound;
 	Vector3 heroPos;
 
-
-
-
-	
 	// Use this for initialization
 	void Start () {
 		numOfEnemies = 0;
