@@ -30,10 +30,10 @@ public class SpaceSpiderCombatScript : EnemyCombat {
 		//figures stats and xp out depending on level
 		if (characterlevel != 1) {
 			Debug.Log (heroScript.getInfo (0));
-			EnemyStrength = 5 + 5f * characterlevel;
-			EnemyToughness = 3 + 5f * characterlevel;
-			EnemyDexterity = 4 + 5f * characterlevel;
-			EnemyReflex = 5 + 5f * characterlevel;
+			EnemyStrength = 5 + 4.7f * characterlevel;
+			EnemyToughness = 3 + 4.7f * characterlevel;
+			EnemyDexterity = 4 + 4.7f * characterlevel;
+			EnemyReflex = 5 + 4.7f * characterlevel;
 			EnemyHealth = 50 + 1f * characterlevel;
 			xp = 400;
 			Debug.Log ("SPIDER LEVEL: " + characterlevel + " health: " + EnemyHealth);

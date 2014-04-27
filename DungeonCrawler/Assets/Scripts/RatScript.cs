@@ -18,7 +18,7 @@ public class RatScript : Enemy {
 		EnemyStrength = 2;
 		EnemyToughness = 3;
 		EnemyDexterity = 6;
-		EnemyReflex = 14;
+		EnemyReflex = 11;
 		EnemyHealth = 30;
 		xp = 250;
 	

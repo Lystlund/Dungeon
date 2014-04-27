@@ -80,7 +80,7 @@ public class HeroMovement : MonoBehaviour {
 			Health = Health + 2;
 			xp = xp-xpRequired ;
 			xpRequired = 100*((int)heroLevel);
-			Debug.Log("Hero Level " + heroLevel);
+			Debug.Log("Hero Level " + heroLevel+" str "+Strength+" tou "+Toughness+" dex "+Dexterity+" ref "+Reflex);
 		}
 
 		turnSpeed = 200.0f;

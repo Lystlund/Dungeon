@@ -14,8 +14,8 @@ public class SpaceZombieCombatScript : EnemyCombat {
 		combatScript = combatMan.GetComponent<combatManagerScript> ();
 		
 		//Set enemies variables, these are declaired in the Enemy script
-		EnemyStrength = 10;
-		EnemyToughness = 10;
+		EnemyStrength = 5;
+		EnemyToughness = 8;
 		EnemyDexterity = 2;
 		EnemyReflex = 2;
 		EnemyHealth = 100;
@@ -31,8 +31,8 @@ public class SpaceZombieCombatScript : EnemyCombat {
 		//figures stats and xp out depending on level
 		if (characterlevel != 1) {
 			Debug.Log (heroScript.getInfo (0));
-			EnemyStrength = 10 + 4.9f * characterlevel;
-			EnemyToughness = 10 + 4.9f * characterlevel;
+			EnemyStrength = 6 + 4.4f * characterlevel;
+			EnemyToughness = 8 + 4.9f * characterlevel;
 			EnemyDexterity = 2 + 5.05f * characterlevel;
 			EnemyReflex = 2 + 5.05f * characterlevel;
 			EnemyHealth = 100 + 2f * characterlevel;

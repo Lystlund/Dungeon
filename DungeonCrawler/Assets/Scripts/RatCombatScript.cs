@@ -17,7 +17,7 @@ public class RatCombatScript : EnemyCombat {
 		EnemyStrength = 2;
 		EnemyToughness = 3;
 		EnemyDexterity = 6;
-		EnemyReflex = 14;
+		EnemyReflex = 11;
 		EnemyHealth = 30;
 		xp = 250;
 		Debug.Log("LEVEL"+heroScript.getInfo(0));
@@ -33,10 +33,10 @@ public class RatCombatScript : EnemyCombat {
 			EnemyStrength = 2 + 4 * characterlevel;
 			EnemyToughness = 3 + 4 * characterlevel;
 			EnemyDexterity = 6 + 4.9f * characterlevel;
-			EnemyReflex = 14 + 4.9f * characterlevel;
+			EnemyReflex = 11 + 4.9f * characterlevel;
 			EnemyHealth = 30 + 0.5f * characterlevel;
 			xp = 250;
-			Debug.Log ("RAT LEVEL: " + characterlevel + " health: " + EnemyHealth);
+			Debug.Log ("RAT LEVEL: " + characterlevel + " health: " + EnemyHealth +" str "+EnemyStrength+" tou "+EnemyToughness+" dex "+EnemyDexterity+" ref "+EnemyReflex);
 		}
 	}
 

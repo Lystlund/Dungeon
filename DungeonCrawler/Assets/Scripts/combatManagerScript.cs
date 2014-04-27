@@ -436,6 +436,7 @@ public class combatManagerScript : MonoBehaviour {
 		lvlset = false;
 		inCombat = false;
 		t.UpdateText(0);		//All booleans and variables are reset.
+		Debug.Log ("str" + heroScript.getInfo (1) + " tou " + heroScript.getInfo (2) + " dex " + heroScript.getInfo (3) + " ref " + heroScript.getInfo (4));
 	}
 
 
