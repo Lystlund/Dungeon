@@ -4,8 +4,6 @@ using System.Collections;
 
 public class HeroMovement : MonoBehaviour {
 
-	float heroPosX;
-	float heroPosY;
 	float heroSpeed = 5.0f;
 	float turnSpeed;
 	float targetAngle = 0.0f;
@@ -19,6 +17,13 @@ public class HeroMovement : MonoBehaviour {
 	float Reflex;
 	float Health;
 
+	public GameObject combatMan;
+	public combatManagerScript combatScript;
+	GameObject CombatMusicHolder;
+	GameObject RoamingMusicHolder;
+	Vector3 heroPos;
+
+
 	void TargetAngle(float speed, float target){
 		float angle = Mathf.MoveTowardsAngle(transform.eulerAngles.z,target,speed*Time.deltaTime);
 		transform.eulerAngles = new Vector3(0,0,angle);
@@ -26,6 +31,13 @@ public class HeroMovement : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+
+		combatMan = GameObject.FindGameObjectWithTag ("Manager");
+		combatScript = combatMan.GetComponent<combatManagerScript> ();
+
+		CombatMusicHolder = GameObject.Find ("Battle_of_Kings");
+		RoamingMusicHolder = GameObject.Find ("Anomaly_Detected");
+
 		heroLevel = 1;
 		xp = 0;
 		xpRequired = 100;
@@ -34,10 +46,31 @@ public class HeroMovement : MonoBehaviour {
 		Dexterity = 10;
 		Reflex = 10;
 		Health = 100;
+		
+
+
 	}
 	
 	// Update is called once per frame
 	void Update () {
+
+		heroPos.x = transform.position.x;
+		heroPos.y = transform.position.y;
+		heroPos.z = transform.position.z;
+
+
+
+
+		if (combatScript.inCombat == false) {
+			RoamingMusicHolder.audio.mute = false;
+			CombatMusicHolder.audio.mute = true;
+		}
+
+		if (combatScript.inCombat == true) {
+			RoamingMusicHolder.audio.mute = true;
+			CombatMusicHolder.audio.mute = false;
+		}
+
 		if (xp >= xpRequired){
 			heroLevel = heroLevel + 1;
 			Strength = Strength + 5;
@@ -50,8 +83,6 @@ public class HeroMovement : MonoBehaviour {
 			Debug.Log("Hero Level " + heroLevel);
 		}
 
-		heroPosX = transform.position.x;
-		heroPosY = transform.position.y;
 		turnSpeed = 200.0f;
 	
 		//Velocity vectors to give movement to the hero

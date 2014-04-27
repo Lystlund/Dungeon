@@ -48,7 +48,6 @@ public class combatManagerScript : MonoBehaviour {
 	
 	// Use this for initialization
 	void Start () {
-
 		numOfEnemies = 0;
 
 		listOfEnemies [0] = 0;
@@ -85,10 +84,6 @@ public class combatManagerScript : MonoBehaviour {
 			Combat(); //runs the combat function every frame when in combat.
 		}
 	}
-
-
-
-
 
 
 	//addToCombat and startCombat is executed by enemyscript collision.
