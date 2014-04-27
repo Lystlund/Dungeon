@@ -4,3 +4,13 @@ With a space theme!
 
 
 This is a collaborative thing we are doing for our course Object Oriented Software Engineering (OOSE).
+
+
+
+CONTROLS:
+On Map:
+Use arrowkeys to move the hero.
+
+In Combat:
+Press Space to initialise attacking
+Press 1-4 (numberkeys), to select which enemy you wish to attack.

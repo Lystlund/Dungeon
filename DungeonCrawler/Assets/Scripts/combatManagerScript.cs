@@ -74,8 +74,8 @@ public class combatManagerScript : MonoBehaviour {
 		heroPos.y = heroScript.transform.position.y;
 		heroPos.z = heroScript.transform.position.z;
 
-		if (inCombat) { //just to test if endCombat works before we actually make it possible to end it xD
-			if (Input.GetKey (KeyCode.Q)) {
+		if (inCombat) { //Developer Tool
+			if (Input.GetKey (KeyCode.O)) {
 					endCombat (false);
 			}
 		}
@@ -391,7 +391,7 @@ public class combatManagerScript : MonoBehaviour {
 
 		if (heroDeath) { //checks if it was the hero's death of enemies' death that triggered endCombat.
 			//this ends combat with the hero losing. Therefore the game will end, loading the menu scene.
-			Application.LoadLevel(0);
+			Application.LoadLevel(3);
 			} 
 		else {
 			//this ends combat with the hero winning.

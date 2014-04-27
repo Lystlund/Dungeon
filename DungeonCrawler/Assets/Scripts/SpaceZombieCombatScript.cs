@@ -14,7 +14,7 @@ public class SpaceZombieCombatScript : EnemyCombat {
 		combatScript = combatMan.GetComponent<combatManagerScript> ();
 		
 		//Set enemies variables, these are declaired in the Enemy script
-		EnemyStrength = 5;
+		EnemyStrength = 6;
 		EnemyToughness = 8;
 		EnemyDexterity = 2;
 		EnemyReflex = 2;

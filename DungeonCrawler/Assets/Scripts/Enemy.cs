@@ -35,25 +35,25 @@ public class Enemy : MonoBehaviour
 		combatScript = combatMan.GetComponent<combatManagerScript> ();
 	}
 
-	void Update(){
+	void Update(){ 
 
 		timer += Time.deltaTime;
-		if (decideMove && id != 3 && id!= 4) {
+		if (decideMove && id != 3 && id!= 4) { //Deciding to move set a new target direction to move in, which the enemy moves in for a random amount of time.
 
 			targetDest = transform.InverseTransformDirection(Random.Range (-5, 5), Random.Range (-5, 5), 0);
 			Vector3 dir = targetDest - transform.position;
 			float angle = Mathf.Atan2(targetDest.y,targetDest.x) * Mathf.Rad2Deg-180;
-			transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
+			transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward); //Rotation is set to be the direction it is walking in.
 
-			decideMove = false;
+			decideMove = false; //when direction is chosen, it will not be reset until it is done moving.
 			moving = true;
 		}
 		if (moving) {
 			transform.rigidbody.velocity = targetDest.normalized;
-			int threshold = Random.Range(2,8);
-				if(transform.position == targetDest || timer > threshold){
+			int threshold = Random.Range(2,8); //This threshold decides how long it will take before the enemy should change direction. This is random.
+				if(timer > threshold){
 				timer = 0;
-				moving = false;
+				moving = false; //booleans and timer reset.
 				decideMove = true;
 			}
 		}
