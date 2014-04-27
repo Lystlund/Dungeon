@@ -64,7 +64,6 @@ public class combatTextScript : MonoBehaviour {
 
 
 	public void UpdateText(float type){	//This function is called at specific times during combat, when meaningful things have changed. This is to avoid it running in Update or other constantly running function.
-		//Debug.Log("TEXT UPDATED");
 
 		if(combatScript.inCombat){		//First we check if we're in combat. If so, the text is shown, if not it is invisible again.
 			guiTexture.color = Color.black;

@@ -105,7 +105,6 @@ public class combatManagerScript : MonoBehaviour {
 		inCombat = true;
 		combatStarted = true;
 		heroHealth = heroScript.getInfo (5);
-		Debug.Log (heroHealth);
 		t.UpdateText(0);		//Combat screen is set, so the bools are set to true and the text will appear via the updateText() function.
 
 		if (combatStarted) {
@@ -398,19 +397,15 @@ public class combatManagerScript : MonoBehaviour {
 
 			if (typeofEnemy == 1){		//Gives the correct amount of xp to the hero, depending on the type and amount of enemies.
 				heroScript.xp = heroScript.xp + spider.xp*numOfEnemies;
-				Debug.Log("Xp: " + heroScript.xp);
 			}
 			if (typeofEnemy == 2){
 				heroScript.xp = heroScript.xp + rat.xp*numOfEnemies;
-				Debug.Log("Xp: " + heroScript.xp);
 			}
 			if (typeofEnemy == 3){
 				heroScript.xp = heroScript.xp + zombie.xp*numOfEnemies;
-				Debug.Log("Xp: " + heroScript.xp);
 			}
 			if (typeofEnemy == 4){
 				heroScript.xp = heroScript.xp + haliax.xp*numOfEnemies;
-				Debug.Log("Xp: " + heroScript.xp);
 				vScript.setInfo();	//sets the info in victoryScript, for the Victory Scene, because when Haliax is defeated, the game is won.
 			}
 
@@ -439,7 +434,6 @@ public class combatManagerScript : MonoBehaviour {
 		lvlset = false;
 		inCombat = false;
 		t.UpdateText(0);		//All booleans and variables are reset.
-		Debug.Log ("str" + heroScript.getInfo (1) + " tou " + heroScript.getInfo (2) + " dex " + heroScript.getInfo (3) + " ref " + heroScript.getInfo (4));
 	}
 
 
